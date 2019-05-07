@@ -53,9 +53,6 @@ def user_profile(request):
 
 def users_profile(request):
     users = User.objects.all()
-
-    a = [i for i in range(10000000)]
-    print(a[-1])
     context = {"users": users}
     return render(request, 'test_app/users.html', context)
 
