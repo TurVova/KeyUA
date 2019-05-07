@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th class="align-middle text-center font-weight-bold th-sm">№</th>
+            <th class="align-middle text-center font-weight-bold th-sm">User name</th>
+            <th class="align-middle text-center font-weight-bold th-sm">First name</th>
+            <th class="align-middle text-center font-weight-bold th-sm">Last name</th>
+            <th class="align-middle text-center font-weight-bold th-sm">Birthday</th>
+            <th class="align-middle text-center font-weight-bold th-lg">Biography</th>
+            <th class="align-middle text-center font-weight-bold th-sm">Contacts</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><p>{{ user.username }}</p></td>
+                <td><p>{{ user.first_name }}</p></td>
+                <td><p>{{ user.last_name }}</p></td>
+                <td><p>{{ user.birthday }}</p></td>
+                <td><p>{{ user.biography }}</p></td>
+                <td><p>{{ user.contacts }}</p></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

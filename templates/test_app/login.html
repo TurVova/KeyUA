@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+    <link rel="stylesheet" href="{% static 'test_app/css/login.css' %}">
+    <title>
+        {% block title %}
+            Login
+        {% endblock title %}
+    </title>
+{% endblock head %}
+</head>
+<body>
+{% block content %}
+    <main role="main">
+        <form class="form-signin" method="POST" action="{% url 'login' %}">
+            <h1 class="h3 mb-3 font-weight-normal text-center">Login</h1>
+            {% csrf_token %}
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
+            {{ form.username }}
+            {{ form.password }}
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="login">
+        </form>
+    </main>
+{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+        <p>Username: {{ form.username }}</p>
+        <p>First name: {{ form.first_name }}</p>
+        <p>Last name: {{ form.last_name }}</p>
+        <p>Birthday: {{ form.birthday }}</p>
+        <p>Biography: {{ form.biography }}</p>
+        <p>Contacts: {{ form.contacts }}</p>
+        <p>If you want to change the password, use<a href="{% url 'change_password' %}"> this form</a></p>
+    <button type="submit">Submit</button>
+</form>
+{% endblock content %}
