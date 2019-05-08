@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 
 class Command(BaseCommand):
-    help = 'Displays model name and entries'
+    help = 'Displays model name and number of entries'
 
     def handle(self, *args, **kwargs):
         models = ContentType.objects.filter(app_label__in=settings.LOCAL_APPS)

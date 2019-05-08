@@ -10,7 +10,6 @@ from test_app.models import ChangeInModel
 def save_or_update_signal(sender, **kwargs):
     models = ContentType.objects.filter(app_label__in=settings.LOCAL_APPS).exclude(model='changeinmodel')
     for model in models:
-        print('awdad', model.model)
         if sender == model.model_class():
             obj = ChangeInModel()
             obj.app_label = model.app_label

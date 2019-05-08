@@ -67,6 +67,12 @@ class User(AbstractBaseUser):
             return self.last_name
         return self.username
 
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
     @property
     def is_active(self):
         return self.active

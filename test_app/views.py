@@ -38,7 +38,7 @@ class Login(FormView):
             if is_safe_url(redirect_path, request.get_host()):
                 return redirect(redirect_path)
             else:
-                return redirect('/')
+                return redirect('test_app:users')
         return super(Login, self).form_valid(form)
 
 
@@ -52,32 +52,43 @@ def user_profile(request):
 
 
 def users_profile(request):
+    '''
+    List of users object
+    '''
     users = User.objects.all()
     context = {"users": users}
     return render(request, 'test_app/users.html', context)
 
+
 @login_required(login_url='login')
 def edit_profile(request):
+    """
+    Editing authorized user
+    """
     if request.method == 'POST':
         form = EditUserProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('/profile')
+            return redirect('test_app:user')
     else:
         form = EditUserProfileForm(instance=request.user)
         context = {'form': form}
         return render(request, 'test_app/edit_profile.html', context)
 
+
 @login_required(login_url='login')
 def change_password(request):
+    """
+    Change authorized user password
+    """
     if request.method == 'POST':
         form = PasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect('/profile')
+            return redirect('test_app:user')
         else:
-            return redirect('/profile/change-form')
+            return redirect('test_app:change_password')
     else:
         form = PasswordChangeForm(user=request.user)
         context = {'form': form}

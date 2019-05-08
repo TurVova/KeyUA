@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load key_ua_tags %}
 {% block content %}
     <table class="table table-striped table-bordered">
         <thead>
@@ -16,7 +17,7 @@
         {% for user in users %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><p>{{ user.username }}</p></td>
+                <td><p><a href="{% link_to_edit user %}">{{ user.username }}</a></p></td>
                 <td><p>{{ user.first_name }}</p></td>
                 <td><p>{{ user.last_name }}</p></td>
                 <td><p>{{ user.birthday }}</p></td>

@@ -15,7 +15,7 @@
 <body>
 {% block content %}
     <main role="main">
-        <form class="form-signin" method="POST" action="{% url 'login' %}">
+        <form class="form-signin" method="POST" action="{% url 'test_app:login' %}">
             <h1 class="h3 mb-3 font-weight-normal text-center">Login</h1>
             {% csrf_token %}
             {% if request.GET.next %}

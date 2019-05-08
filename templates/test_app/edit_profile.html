@@ -9,7 +9,7 @@
         <p>Birthday: {{ form.birthday }}</p>
         <p>Biography: {{ form.biography }}</p>
         <p>Contacts: {{ form.contacts }}</p>
-        <p>If you want to change the password, use<a href="{% url 'change_password' %}"> this form</a></p>
+        <p>If you want to change the password, use<a href="{% url 'test_app:change_password' %}"> this form</a></p>
     <button type="submit">Submit</button>
 </form>
 {% endblock content %}

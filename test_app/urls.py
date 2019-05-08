@@ -2,6 +2,8 @@ from django.urls import path
 from test_app.views import Logout, Login
 from test_app import views
 
+app_name = 'test_app'
+
 urlpatterns = [
     path('', views.users_profile, name='users'),
     path('profile/', views.user_profile, name='user'),
